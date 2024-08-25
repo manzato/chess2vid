@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "chess2vid"
+version = "0.1.0"
+description = ""
+authors = ["Guillermo Manzato <manzato@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "==3.11.*"
+chess = "^1.10.0"
+bpy = "^4.2.0"
+
+[tool.poetry.scripts]
+chess2vid = "chess2vid:main"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
