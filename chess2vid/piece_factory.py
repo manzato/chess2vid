@@ -1,5 +1,4 @@
 from abc import abstractmethod
-from os import path
 import bpy
 from chess import BISHOP, BLACK, KING, KNIGHT, PAWN, QUEEN, ROOK, WHITE
 

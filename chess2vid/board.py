@@ -2,20 +2,13 @@ import os
 import bpy
 
 from chess import (
-    BISHOP,
     BLACK,
     FILE_NAMES,
-    KING,
-    KNIGHT,
-    PAWN,
-    QUEEN,
     RANK_NAMES,
-    ROOK,
     WHITE,
     Board,
     Square,
     piece_name,
-    piece_symbol,
 )
 import chess
 
@@ -31,10 +24,6 @@ class ChessBoard:
         self.__piece_factory = piece_factory
         self.__cell_size = 1 * self.__scale
         self.__context = context
-
-    def initial_piece_setup(self, board: Board) -> None:
-        for square, piece in board.piece_map().items():
-            self.create_piece(piece.piece_type, piece.color, square)
 
     def __get_index(self, file: str, rank: int):
         return 8 * FILE_NAMES.index(file) + (rank - 1)
@@ -86,22 +75,7 @@ class ChessBoard:
         name = "White_" if color == WHITE else "Black_"
         name += piece_name(piece_type)
         name += "_" + chess.square_name(square).upper()
-
         return name
-
-    """"
-    def __create_piece(self, piece_type, color, file: str, rank: int):
-        piece = self.__piece_factory.create_piece(piece_type)
-        piece.location = self.get_2d_location(file, rank) + (0,)
-
-
-        piece.name = f'{piece_symbol(piece_type)}{file}{str(rank)}'
-
-        self.__apply_material(color, piece)
-                
-        self.set_piece(file, rank, piece)
-        return piece
-    """
 
     def create_piece(self, piece_type, color, square: Square):
         piece = self.__piece_factory.create_piece(piece_type, color)
@@ -109,40 +83,6 @@ class ChessBoard:
         piece.name = self.__get_piece_obj_name(piece_type, color, square)
         self.__apply_material(color, piece)
         return piece
-
-    def __create_piecex(self, piece_type, color, square: Square):
-        piece = self.__piece_factory.create_piece(piece_type)
-        piece.location = self.__context.square_position(square) + (0,)
-        piece.name = f"{piece_symbol(piece_type)}{square}"
-        self.__apply_material(color, piece)
-
-        # self.set_piece(file, rank, piece)
-        return piece
-
-    def create_pawnx(self, color, square: Square):
-        return self.__create_piecex(PAWN, color, square)
-
-    def create_pawn(self, color, file: str, rank: int):
-        return self.__create_piece(PAWN, color, file, rank)
-
-    def create_bishop2d(self, color, file: str, rank: int):
-        return self.__create_piece(BISHOP, color, file, rank)
-
-    def create_knight(self, color, file: str, rank: int):
-        knight = self.__create_piece(KNIGHT, color, file, rank)
-
-        if color == BLACK:
-            bpy.ops.transform.rotate(value=3.14, orient_axis="Z", orient_type="GLOBAL")
-        return knight
-
-    def create_rook2d(self, color, file: str, rank: int):
-        return self.__create_piece(ROOK, color, file, rank)
-
-    def create_queen2d(self, color, file: str, rank: int):
-        return self.__create_piece(QUEEN, color, file, rank)
-
-    def create_king2d(self, color, file: str, rank: int):
-        return self.__create_piece(KING, color, file, rank)
 
     def create_cell(self, color, file: str, rank: int):
         return self.__create_cell(color, file, rank)
@@ -171,6 +111,10 @@ class ChessBoard:
             for rank in RANK_NAMES:
                 color = BLACK if color == WHITE else WHITE
                 self.draw_cell(color, file, rank)
+
+    def initial_piece_setup(self, board: Board) -> None:
+        for square, piece in board.piece_map().items():
+            self.create_piece(piece.piece_type, piece.color, square)
 
     def recreate_game(self, game):
         """
