@@ -1,0 +1,15 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2023.12.23"]
+[Round "?"]
+[White "manzato"]
+[Black "jakubhromek"]
+[Result "1-0"]
+[ECO "D02"]
+[WhiteElo "1533"]
+[BlackElo "1609"]
+[TimeControl "600"]
+[EndTime "12:31:34 PST"]
+[Termination "manzato won by checkmate"]
+
+1. e4 d5 2. exd5# 1-0

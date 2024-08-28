@@ -50,6 +50,8 @@ def main():
 
     c2v.setup()
 
+    c2v.create_frames()
+
     c2v.render()
 
     """

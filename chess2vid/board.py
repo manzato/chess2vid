@@ -1,25 +1,40 @@
 import os
 import bpy
 
+from chess.pgn import Game
 from chess import (
     BLACK,
     FILE_NAMES,
-    RANK_NAMES,
+    SQUARES,
     WHITE,
     Board,
+    Color,
+    Move,
     Square,
     piece_name,
+    square_name,
 )
 import chess
 
+from chess2vid.actions import Action, MoveAction, TakeAction
 from chess2vid.blender import apply_material
 from chess2vid.context import Context
 from chess2vid.piece_factory import PieceFactory
 
 
+def square_color(square: Square) -> Color:
+    base = square & 0x01 == 0x01
+    invert = square & 0x08 == 0x08
+
+    if base:
+        return BLACK if invert else WHITE
+    else:
+        return WHITE if invert else BLACK
+
+
 class ChessBoard:
     def __init__(self, piece_factory: PieceFactory, context: Context):
-        self.__pieces: list[int] = [None for i in range(64)]
+        self.__pieces: list[int] = [None for i in range(len(SQUARES))]
         self.__scale = 1
         self.__piece_factory = piece_factory
         self.__cell_size = 1 * self.__scale
@@ -61,16 +76,6 @@ class ChessBoard:
             ),
         )
 
-    def __create_cell(self, color, file: str, rank: int):
-        bpy.ops.mesh.primitive_cube_add(
-            size=self.__cell_size,
-            location=self.get_2d_location(file, rank) + (-0.1,),
-            scale=(1, 1, 0.209),
-        )
-        cell = bpy.context.active_object
-        cell.name = f"{file}{str(rank)}"
-        self.__apply_material(color, cell)
-
     def __get_piece_obj_name(self, piece_type, color, square: Square):
         name = "White_" if color == WHITE else "Black_"
         name += piece_name(piece_type)
@@ -82,41 +87,51 @@ class ChessBoard:
         piece.location = self.__context.square_position(square) + (0,)
         piece.name = self.__get_piece_obj_name(piece_type, color, square)
         self.__apply_material(color, piece)
+        self.__pieces[square] = piece
         return piece
 
-    def create_cell(self, color, file: str, rank: int):
-        return self.__create_cell(color, file, rank)
-
-    def create_board(self):
-        color = WHITE
-        for file in FILE_NAMES:
-            color = BLACK if color == WHITE else WHITE
-            for rank in RANK_NAMES:
-                color = BLACK if color == WHITE else WHITE
-                self.create_cell(color, file, rank)
-
-    def draw_cell(self, color, file: str, rank: str):
-        location = self.__context.get_2d_location(file, rank) + (-0.1,)
+    def draw_cell(self, square: Square):
+        location = self.__context.square_position(square) + (-0.1,)
         bpy.ops.mesh.primitive_cube_add(
             size=self.__cell_size, location=location, scale=(1, 1, 0.209)
         )
         cell = bpy.context.active_object
-        cell.name = f"{file}{str(rank)}"
-        self.__apply_material(color, cell)
+        cell.name = square_name(square)
+        self.__apply_material(square_color(square), cell)
 
     def draw_board(self, context: Context) -> None:
-        color = WHITE
-        for file in FILE_NAMES:
-            color = BLACK if color == WHITE else WHITE
-            for rank in RANK_NAMES:
-                color = BLACK if color == WHITE else WHITE
-                self.draw_cell(color, file, rank)
+        for square in SQUARES:
+            self.draw_cell(square)
 
     def initial_piece_setup(self, board: Board) -> None:
         for square, piece in board.piece_map().items():
             self.create_piece(piece.piece_type, piece.color, square)
 
-    def recreate_game(self, game):
+    def __get_action_from_move(self, move: Move) -> Action:
+
+        target_occupant = self.__pieces[move.to_square]
+        piece = self.__pieces[move.from_square]
+
+        # TODO: Handle promotions
+
+        # Update board state
+        # TODO: Remove taken piece?
+        self.__pieces[move.to_square] = piece
+        self.__pieces[move.from_square] = None
+
+        if target_occupant:
+            return TakeAction(move.from_square, move.to_square, piece)
+        else:
+            return MoveAction(move.from_square, move.to_square, piece)
+
+    def recreate_game(self, game: Game) -> list[Action]:
+        actions = []
+        for move in game.mainline_moves():
+            actions.append(self.__get_action_from_move(move))
+
+        for a in actions:
+            print(a)
+
         """
         animator = Animator(self)
 
@@ -128,7 +143,7 @@ class ChessBoard:
 
         print("Finished recreating game")
         """
-        pass
+        return actions
 
     def render_frames(self, path):
         scene = bpy.context.scene
