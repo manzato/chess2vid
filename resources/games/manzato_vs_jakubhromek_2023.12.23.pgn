@@ -1,0 +1,22 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2023.12.23"]
+[Round "?"]
+[White "manzato"]
+[Black "jakubhromek"]
+[Result "1-0"]
+[ECO "D02"]
+[WhiteElo "1533"]
+[BlackElo "1609"]
+[TimeControl "600"]
+[EndTime "12:31:34 PST"]
+[Termination "manzato won by checkmate"]
+
+1. d4 d5 2. Bf4 Bf5 3. e3 e6 4. Nf3 c5 5. c3 c4 6. Nbd2 Bd6 7. Ne5 b5 8. h3 Ne7
+9. g4 Be4 10. Nxe4 dxe4 11. Bg2 f5 12. gxf5 exf5 13. h4 Ng6 14. Nxg6 hxg6 15.
+Bg5 Be7 16. f4 Bxg5 17. fxg5 Nc6 18. Qe2 Ne7 19. O-O-O Nd5 20. Qf2 Qa5 21. Kb1
+b4 22. cxb4 Qxb4 23. Rc1 Rb8 24. Rc2 Nc3+ 25. Ka1 Nd5 26. Rhc1 Rc8 27. Qg3 Kf7
+28. Bf1 Nb6 29. Be2 Rb8 30. Qe5 Rhe8 31. Qh2 Na4 32. Bxc4+ Kf8 33. Bb3 Rbd8 34.
+Rc4 Qd6 35. Qxd6+ Rxd6 36. Rxa4 a6 37. Rac4 Ke7 38. Rc7+ Kf8 39. Rc8 Rdd8 40.
+Rxd8 Rxd8 41. Rc6 a5 42. Rxg6 Rc8 43. a3 Rc1+ 44. Ka2 Re1 45. Re6 Rxe3 46. d5
+Rd3 47. d6 e3 48. Bc4 Rd4 49. Ba6 f4 50. g6 f3 51. Bb5 Rd5 52. Re8# 1-0
