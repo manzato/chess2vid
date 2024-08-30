@@ -1,19 +1,17 @@
+import bpy
+
 from chess2vid.actions import Action
-from chess2vid.board import ChessBoard
 
 
 class Animator:
 
-    def __init__(self, board: ChessBoard, starting_frame=1):
-        self.__board = board
+    def __init__(self, starting_frame=1):
         self.__current_frame = starting_frame
         self.__total_frames = starting_frame
 
-    def animate(self, actions: list[Action]):
+    def animateAction(self, action: Action):
+        frames = action.animate(self.__current_frame)
 
-        for action in actions:
-            # self.__total_frames = self.__total_frames + frame_length
-
-            action.animate(self.__board, self.__current_frame)
-
-            # self.__current_frame = self.__current_frame + frame_length
+        self.__current_frame = self.__current_frame + frames
+        self.__total_frames = self.__total_frames + frames
+        bpy.context.scene.frame_end = self.__total_frames

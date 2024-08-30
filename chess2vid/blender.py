@@ -62,7 +62,3 @@ def create_light():
     bpy.context.object.data.energy = 4000
 
     return bpy.context.active_object
-
-
-def apply_material(object, material):
-    object.data.materials.append(material)
