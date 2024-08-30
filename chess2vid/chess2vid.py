@@ -1,10 +1,10 @@
+import os
 import bpy
 
 import chess.pgn
 
 from chess.pgn import Game
 
-from chess2vid.animator import Animator
 from chess2vid.blender import create_camera, create_light, create_material
 from chess2vid.piece_factory import StlPieceFactory
 from chess2vid.board import ChessBoard
@@ -51,12 +51,20 @@ class Chess2Vid:
     def create_frames(self):
         self.__board.recreate_game(self.__game)
 
-    def render(self):
+    def render(self, start: int | None, end: int | None):
         scene = bpy.context.scene
         scene.render.resolution_x = self.__frame_width
         scene.render.resolution_y = self.__frame_height
 
-        self.__board.draw_board()
+        if not end:
+            end = bpy.context.scene.frame_end
 
-        # scene.render.filepath = f"{self.__output_path}/1.png"
-        # bpy.ops.render.render(write_still=True)
+        print(f"RENDER from {start} to {end}")
+
+        for frame in range(start, end + 1):
+            print(f"Rendering frame {frame}!")
+            scene.frame_current = frame
+            scene.render.filepath = os.path.join(
+                self.__output_path, f"{str(frame)}.png"
+            )
+            bpy.ops.render.render(write_still=True)

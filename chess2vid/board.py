@@ -138,6 +138,8 @@ class ChessBoard:
 
     def recreate_game(self, game: Game):
 
+        self.draw_board()
+
         self._initial_piece_setup(game.board())
 
         animator = Animator()
