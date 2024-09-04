@@ -8,7 +8,7 @@ from chess2vid.location import CELL_SIZE, square_location
 from chess2vid.material import apply_material
 from chess2vid.piece_factory import PieceFactory
 
-FRAMES_PER_MOVE = 20
+FRAMES_PER_MOVE = 30
 
 
 def _get_piece_obj_name(piece_type: PieceType, color, square: Square):
