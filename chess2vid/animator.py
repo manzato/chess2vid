@@ -15,3 +15,6 @@ class Animator:
         self.__current_frame = self.__current_frame + frames
         self.__total_frames = self.__total_frames + frames
         bpy.context.scene.frame_end = self.__total_frames
+
+    def get_total_frames(self) -> int:
+        return self.__total_frames

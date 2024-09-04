@@ -18,9 +18,6 @@ ap.add_argument(
     default=1080,
     help="Height of the resulting frames",
 )
-ap.add_argument(
-    "-fps", "--frames-per-second", type=int, default=30, help="Frames per second"
-)
 ap.add_argument("-i", "--input-game", required=True, help="Source game to convert")
 ap.add_argument("-b", "--blender-bin", help="Path to blender binary")
 ap.add_argument(
@@ -66,8 +63,6 @@ def main():
 
     c2v = Chess2Vid(**args)
 
-    c2v.setup()
-
     c2v.create_frames()
 
     if save_blender:
@@ -79,4 +74,4 @@ def main():
 
     if render_frames:
         [start, end] = render_frames.split(":")
-        c2v.render(int(start) if start else None, int(end) if end else None)
+        c2v.render_frames(int(start) if start else None, int(end) if end else None)
