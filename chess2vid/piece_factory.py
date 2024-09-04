@@ -2,13 +2,14 @@ from abc import abstractmethod
 import bpy
 from chess import BISHOP, BLACK, KING, KNIGHT, PAWN, QUEEN, ROOK
 
+from chess2vid.blender import PieceObject
 from chess2vid.material import apply_material
 
 
 class PieceFactory:
 
     @abstractmethod
-    def create_piece(self, piece_type):
+    def create_piece(self, piece_type) -> PieceObject:
         pass
 
 

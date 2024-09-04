@@ -1,6 +1,10 @@
 import bpy
 
 
+class PieceObject:
+    pass
+
+
 def create_material(name: str, color):
     material = bpy.data.materials.new(name=name)
     material.use_nodes = True
@@ -22,7 +26,7 @@ def create_camera():
     """
     create and setup the camera
     """
-    bpy.ops.object.camera_add(location=(10, 1, 3), rotation=(0, 0, 0))
+    bpy.ops.object.camera_add(location=(10, 1, 4), rotation=(0, 0, 0))
     camera = bpy.context.active_object
 
     # set the camera as the "active camera" in the scene
