@@ -1,7 +1,12 @@
 
-all: run
+all: short
 
 BLENDER="/home/manzato/projects/tools/blender-4.0.2-linux-x64/blender"
+
+
+
+real:
+	poetry run chess2vid -i './resources/games/manzato_vs_jakubhromek_2023.12.23.pgn' --frame-width=1024 --frame-height=768 --blender-bin ${BLENDER} --save-blender real.blend -o ./real_frames -r 200:210
 
 
 short: 
