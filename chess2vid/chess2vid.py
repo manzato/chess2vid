@@ -133,7 +133,12 @@ class Chess2Vid:
         camera.keyframe_insert("location", frame=1)
 
         for action in actions:
-            animator.animateAction(action)
+            print(f"Animate {action}")
+            try:
+                animator.animateAction(action)
+            except AttributeError as e:
+                print(f"Failed to animate {action}")
+                raise e from None
 
         camera.location.x = 8
         camera.location.y = 6

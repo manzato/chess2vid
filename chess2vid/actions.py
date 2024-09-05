@@ -129,7 +129,10 @@ class MoveAction(BaseAction):
         return FRAMES_PER_MOVE
 
     def __str__(self) -> str:
-        return f"Move {self.piece.name} from {self.source} to {self.target}"
+        name = self.piece.name if self.piece else "None"
+        return (
+            f"Move {name} from {square_name(self.source)} to {square_name(self.target)}"
+        )
 
 
 class TakeAction(MoveAction):
@@ -149,7 +152,8 @@ class TakeAction(MoveAction):
         return super().animate(current_frame)
 
     def __str__(self) -> str:
-        return f"Take {self.source} to {self.target}"
+        name = self.piece.name if self.piece else "None"
+        return f"{name} takes from {square_name(self.source)} to {square_name(self.target)}"
 
 
 class CastleAction(MoveAction):
