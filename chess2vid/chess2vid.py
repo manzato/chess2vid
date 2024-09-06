@@ -128,7 +128,8 @@ class Chess2Vid:
             actions.append(action)
 
         self.verbose("Placing pieces")
-        for square, piece in self.__game.board().piece_map().items():
+        board = self.__game.board()
+        for square, piece in board.piece_map().items():
             action = PlacePieceAction(
                 square, piece.piece_type, piece.color, piece_factory
             )
@@ -136,7 +137,6 @@ class Chess2Vid:
             action.apply(board_state)
             actions.append(action)
 
-        board = self.__game.board()
         for move in self.__game.mainline_moves():
             action = _get_action_from_move(board, board_state, move)
             self.verbose(f"Applying action {action}")
