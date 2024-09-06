@@ -38,6 +38,13 @@ ap.add_argument(
     "--render-frames",
     help="Frames to render",
 )
+ap.add_argument(
+    "-v",
+    "--verbose",
+    action="store_true",
+    default=False,
+    help="Verbose output",
+)
 
 
 def main():
@@ -69,7 +76,7 @@ def main():
         # Don't leave anything selected, this is just for the saved blend file
         bpy.ops.object.select_all(action="DESELECT")
 
-        print(f"Saving generated blender to {save_blender}")
+        c2v.verbose(f"Saving generated blender to {save_blender}")
         bpy.ops.wm.save_as_mainfile(filepath=save_blender)
 
     if render_frames:

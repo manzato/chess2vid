@@ -87,11 +87,13 @@ class Chess2Vid:
         input_game: str,
         output_path: str,
         stl_path: str,
+        verbose: bool,
     ):
         self.__frame_width = frame_width
         self.__frame_height = frame_height
         self.__output_path = output_path
         self.__stl_path = stl_path
+        self.__verbose = verbose
 
         # Start with an empty world (no camera, lights, etc)
         bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -101,7 +103,12 @@ class Chess2Vid:
 
         self.__game: Game = get_game(file_name=input_game)
 
+    def verbose(self, str):
+        if self.__verbose:
+            print(str)
+
     def create_frames(self):
+        self.verbose("Creating cameras")
 
         (camera, camera_target) = create_camera()
         create_light()
@@ -109,22 +116,30 @@ class Chess2Vid:
         piece_factory = StlPieceFactory(self.__stl_path)
         board_state = BoardState()
         actions: list[Action] = []
+
+        self.verbose("Generating square actions")
+
         for square in SQUARES:
             color = square_color(square)
             action = DrawSquareAction(square, color)
+
+            self.verbose(f"Applying action {action}")
             action.apply(board_state)
             actions.append(action)
 
+        self.verbose("Placing pieces")
         for square, piece in self.__game.board().piece_map().items():
             action = PlacePieceAction(
                 square, piece.piece_type, piece.color, piece_factory
             )
+            self.verbose(f"Applying action {action}")
             action.apply(board_state)
             actions.append(action)
 
         board = self.__game.board()
         for move in self.__game.mainline_moves():
             action = _get_action_from_move(board, board_state, move)
+            self.verbose(f"Applying action {action}")
             action.apply(board_state)
             actions.append(action)
 
@@ -133,7 +148,7 @@ class Chess2Vid:
         camera.keyframe_insert("location", frame=1)
 
         for action in actions:
-            print(f"Animate {action}")
+            self.verbose(f"Animate {action}")
             try:
                 animator.animateAction(action)
             except AttributeError as e:
