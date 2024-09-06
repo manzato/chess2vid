@@ -143,7 +143,7 @@ class Chess2Vid:
             action.apply(board_state)
             actions.append(action)
 
-        animator = Animator()
+        animator = Animator(self.__verbose)
 
         camera.keyframe_insert("location", frame=1)
 
