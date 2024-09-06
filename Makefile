@@ -14,3 +14,6 @@ short:
 
 scholar:
 	poetry run chess2vid -i './resources/games/scholar.pgn' --blender-bin ${BLENDER} -o ./scholar_frames -r 1:
+
+marcoshuck:
+	poetry run chess2vid -i './resources/games/Phoenix_45_vs_marcoshuck_2024.09.05.pgn' --frame-width=1024 --frame-height=768 --blender-bin ${BLENDER} --save-blender marcoshuck.blend -o ./marcoshuck_frames -r 1:

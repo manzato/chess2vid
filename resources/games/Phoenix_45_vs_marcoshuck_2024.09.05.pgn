@@ -1,0 +1,127 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2024.09.05"]
+[Round "-"]
+[White "Phoenix_45"]
+[Black "marcoshuck"]
+[Result "0-1"]
+[CurrentPosition "8/2q2k2/4p1r1/8/3B1P1K/Q3P3/8/3R4 w - -"]
+[Timezone "UTC"]
+[ECO "A45"]
+[ECOUrl "https://www.chess.com/openings/Indian-Game-2.Bf4-d6-3.e3-g6"]
+[UTCDate "2024.09.05"]
+[UTCTime "04:30:17"]
+[WhiteElo "731"]
+[BlackElo "735"]
+[TimeControl "300"]
+[Termination "marcoshuck won on time"]
+[StartTime "04:30:17"]
+[EndDate "2024.09.05"]
+[EndTime "04:40:04"]
+[Link "https://www.chess.com/game/live/109099102406"]
+[WhiteUrl "https://images.chesscomfiles.com/uploads/v1/user/154346211.48d4ec55.50x50o.ee6d1aea06a8.jpeg"]
+[WhiteCountry "69"]
+[WhiteTitle ""]
+[BlackUrl "https://images.chesscomfiles.com/uploads/v1/user/55627452.b28c240d.50x50o.d11f873153a4.jpg"]
+[BlackCountry "4"]
+[BlackTitle ""]
+
+1. d4 Nf6 2. Bf4 d6 3. e3 g6 4. Nd2 Bg7 5. c3 O-O 6. Ngf3 c5 7. h3 c4 $2
+{[%c_effect
+c4;square;c4;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+8. Bxc4 $1 {[%c_effect
+c4;square;c4;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+8... d5 9. Bb3 Nc6 10. g4 b6 11. h4 $2 {[%c_effect
+h4;square;h4;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+11... Nxg4 $6 {[%c_effect
+g4;square;g4;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+12. Ne5 $2 {[%c_effect
+e5;square;e5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+12... Ngxe5 $6 {[%c_effect
+e5;square;e5;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+13. dxe5 Nxe5 14. h5 $2 {[%c_effect
+h5;square;h5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+14... a5 $2 {[%c_effect
+a5;square;a5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+15. Nf3 $6 {[%c_effect
+f3;square;f3;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+15... Nxf3+ $6 {[%c_effect
+f3;square;f3;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+16. Qxf3 a4 17. Bxd5 $1 {[%c_effect
+d5;square;d5;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+17... Ra5 $6 {[%c_effect
+a5;square;a5;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+18. c4 $2 {[%c_effect
+c4;square;c4;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+18... e6 19. Bc6 $6 {[%c_effect
+c6;square;c6;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+19... Rc5 $4 {[%c_effect
+c5;square;c5;type;Blunder;path;null;size;100%25;animated;false;persistent;true]}
+20. Bb5 $9 {[%c_effect
+b5;square;b5;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+20... Bd7 $4 {[%c_effect
+d7;square;d7;type;Blunder;path;null;size;100%25;animated;false;persistent;true]}
+21. b4 $9 {[%c_effect
+b4;square;b4;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+21... Bxa1 $9 {[%c_effect
+a1;square;a1;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+22. bxc5 $1 {[%c_effect
+c5;square;c5;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+22... Bxb5 $1 {[%c_effect
+b5;square;b5;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+23. cxb5 $6 {[%c_effect
+b5;square;b5;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+23... bxc5 $2 {[%c_effect
+c5;square;c5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+24. Ke2 Bg7 25. Qc6 Qa5 $2 {[%c_effect
+a5;square;a5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+26. Qxc5 $9 {[%c_effect
+c5;square;c5;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+26... a3 $9 {[%c_effect
+a3;square;a3;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+27. Rd1 $6 {[%c_effect
+d1;square;d1;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+27... Bc3 $2 {[%c_effect
+c3;square;c3;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+28. Be5 $9 {[%c_effect
+e5;square;e5;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+28... Bb4 $9 {[%c_effect
+b4;square;b4;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+29. Qd4 $4 {[%c_effect
+d4;square;d4;type;Blunder;path;null;size;100%25;animated;false;persistent;true]}
+29... Qxb5+ $1 {[%c_effect
+b5;square;b5;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+30. Kf3 f6 31. Bxf6 $2 {[%c_effect
+f6;square;f6;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+31... Qf5+ $1 {[%c_effect
+f5;square;f5;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+32. Ke2 Qxh5+ 33. f3 Qh2+ $1 {[%c_effect
+h2;square;h2;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+34. Kd3 Qxa2 35. Qxb4 Qd5+ $2 {[%c_effect
+d5;square;d5;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+36. Qd4 $4 {[%c_effect
+d4;square;d4;type;Blunder;path;null;size;100%25;animated;false;persistent;true]}
+36... Qb3+ $9 {[%c_effect
+b3;square;b3;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+37. Ke4 $4 {[%c_effect
+e4;square;e4;type;Blunder;path;null;size;100%25;animated;false;persistent;true]}
+37... Qb7+ $6 {[%c_effect
+b7;square;b7;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+38. Kf4 $1 {[%c_effect
+f4;square;f4;type;GreatFind;path;null;size;100%25;animated;true;persistent;true]}
+38... Kf7 $9 {[%c_effect
+f7;square;f7;type;Miss;path;null;size;100%25;animated;false;persistent;true]}
+39. Kg3 Qc7+ $6 {[%c_effect
+c7;square;c7;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+40. f4 h5 $6 {[%c_effect
+h5;square;h5;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+41. Bh8 $6 {[%c_effect
+h8;square;h8;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+41... Ke8 $2 {[%c_effect
+e8;square;e8;type;Mistake;path;null;size;100%25;animated;false;persistent;true]}
+42. Qa4+ $6 {[%c_effect
+a4;square;a4;type;Inaccuracy;path;null;size;100%25;animated;false;persistent;true]}
+42... Ke7 43. Bd4 h4+ 44. Kxh4 g5+ 45. Kxg5 Rg8+ 46. Kh4 Rg6 47. Qxa3+ Kf7
+{[%c_effect
+f7;square;f7;type;Winner,h4;square;h4;type;TimeoutWhite][%c_highlight
+e6;keyPressed;none;opacity;0.8;square;e6;persistent;false]} 0-1
