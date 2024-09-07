@@ -8,6 +8,10 @@ Small project that generates video frames (png) out of chess games (in pgn), so 
 
 `poetry install`
 
+## The blender situation
+
+The packaged blender on my linux (LMDE 6) is quite old (3.4) and this project requires 4.x, so I had to download blender from https://www.blender.org/download/ and use the `--blender-bin` flag pointing to this installation's `blender` binary.
+
 ## Usage
 
 `chess2vid [-h] [-fw FRAME_WIDTH] [-fh FRAME_HEIGHT] -i INPUT_GAME [-b BLENDER_BIN] [-o OUTPUT_PATH] [-stl STL_PATH] [-s SAVE_BLENDER] [-r RENDER_FRAMES [-v]`
