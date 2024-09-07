@@ -1,7 +1,7 @@
 
 all: short
 
-BLENDER="/home/manzato/projects/tools/blender-4.0.2-linux-x64/blender"
+BLENDER="/home/manzato/projects/tools/blender-4.2.1-linux-x64/blender"
 
 
 
