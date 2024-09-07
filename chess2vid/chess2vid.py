@@ -66,7 +66,7 @@ def _is_castle(board: Board, move: Move):
 
 
 def _get_action_from_move(board: Board, board_state: BoardState, move: Move) -> Action:
-    target_occupant = board_state.get_piece(move.to_square)
+    target_occupant = board_state.get_piece_or_none(move.to_square)
     piece = board_state.get_piece(move.from_square)
 
     if _is_castle(board, move):
