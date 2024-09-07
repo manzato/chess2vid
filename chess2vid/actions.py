@@ -7,9 +7,11 @@ from chess import (
     D1,
     D8,
     F1,
+    F8,
     G1,
     G8,
     H1,
+    H8,
     WHITE,
     Color,
     PieceType,
@@ -196,8 +198,8 @@ class CastleAction(BaseAction):
             self.__rook_source = A1
             self.__rook_target = D1
         elif target == G8:
-            self.__rook_source = A8
-            self.__rook_target = D8
+            self.__rook_source = H8
+            self.__rook_target = F8
         elif target == C8:
             self.__rook_source = A8
             self.__rook_target = D8
