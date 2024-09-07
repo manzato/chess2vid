@@ -4,6 +4,10 @@
 
 Small project that generates video frames (png) out of chess games (in pgn), so it could have been called pgn2png.
 
+## Overview of the project
+
+This project loads the pgn game from the file and generates 30 frames per move of the game. It does this by using the blender API to generate objects and animations. The resulting blender file and be saved and used independently, to investigate what was done, change something, etc.
+
 ## Install
 
 `poetry install`
