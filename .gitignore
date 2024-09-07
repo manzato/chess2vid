@@ -2,8 +2,4 @@
 rendered_frames/
 *.blend
 *.blend1
-*.png
-pp/
-
-dump/
 *_frames/
