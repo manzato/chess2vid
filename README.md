@@ -41,15 +41,15 @@ The resulting video will be called output.mp4
 Given rendering takes a lot of time, you can run the rendering in different machines, dividing the workload. Let's assume a complete game requires about 2000 frames and we have 3 computers, we could run the following:
 
 In computer #1
-`poetry run chess2vid --input-game my-game.pgn --save-blender my-game.blend --output-path ./my-game-frames --render-frames 1:700`
+`poetry run chess2vid --input-game my-game.pgn --output-path ./my-game-frames --render-frames 1:700`
 
 
 In computer #2
-`poetry run chess2vid --input-game my-game.pgn --save-blender my-game.blend --output-path ./my-game-frames --render-frames 701:1400`
+`poetry run chess2vid --input-game my-game.pgn --output-path ./my-game-frames --render-frames 701:1400`
 
 
 In computer #3
-`poetry run chess2vid --input-game my-game.pgn --save-blender my-game.blend --output-path ./my-game-frames --render-frames 1401:`
+`poetry run chess2vid --input-game my-game.pgn --output-path ./my-game-frames --render-frames 1401:`
 
 Then we can merge the resulting frames in a single path and generate the video
 
