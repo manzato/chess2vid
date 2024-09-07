@@ -52,3 +52,7 @@ In computer #3
 `poetry run chess2vid --input-game my-game.pgn --save-blender my-game.blend --output-path ./my-game-frames --render-frames 1401:`
 
 Then we can merge the resulting frames in a single path and generate the video
+
+### Sample frame
+
+![sample frame](docs/sample_frame.png "Sample frame")
