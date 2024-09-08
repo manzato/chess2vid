@@ -17,3 +17,6 @@ scholar:
 
 marcoshuck:
 	poetry run chess2vid -i './resources/games/Phoenix_45_vs_marcoshuck_2024.09.05.pgn' --frame-width=1024 --frame-height=768 --blender-bin ${BLENDER} --save-blender marcoshuck.blend -o ./marcoshuck_frames -r 1:
+
+oro:
+	poetry run chess2vid -i './resources/games/Oro_vs_Asis_Gargatagli_2024.06.25.pgn' --frame-width=1024 --frame-height=768 --blender-bin ${BLENDER} --save-blender oro.blend -o ./oro_frames -r 1:1 --verbose
