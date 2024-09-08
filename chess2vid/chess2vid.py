@@ -128,7 +128,7 @@ class Chess2Vid:
         # state of the board mutates along with the moves as we traverse the game)
         board.reset_board()
 
-        verbose(board.board_fen())
+        self.verbose(board.board_fen())
         for move in self.__game.mainline_moves():
             try:
                 action = _get_action_from_move(board, board_state, move)
@@ -147,7 +147,7 @@ class Chess2Vid:
 
             board.push(move)
             actions.append(action)
-            verbose(board.board_fen())
+            self.verbose(board.board_fen())
 
         animator = Animator(self.__verbose)
 
