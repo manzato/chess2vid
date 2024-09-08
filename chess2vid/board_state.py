@@ -1,6 +1,7 @@
-from chess import FILE_NAMES, RANK_NAMES, SQUARES, Square, square_name
+from chess import SQUARES, Square, square_name
 
 from chess2vid.blender import PieceObject
+from chess2vid.exceptions import NoPieceError
 
 
 class BoardState:
@@ -18,9 +19,7 @@ class BoardState:
         if piece:
             return piece
 
-        raise ValueError(
-            f"Expected to find a piece at {square_name(square)} but found None"
-        )
+        raise NoPieceError(f"At {square_name(square)}")
 
     def get_piece_or_none(self, square: Square) -> PieceObject | None:
         return self.__pieces[square]

@@ -1,15 +1,9 @@
 import os
+from tabnanny import verbose
 import bpy
 
 from chess import (
     BLACK,
-    C1,
-    C8,
-    E1,
-    E8,
-    G1,
-    G8,
-    KING,
     SQUARES,
     WHITE,
     Board,
@@ -32,6 +26,7 @@ from chess2vid.actions import (
 from chess2vid.animator import Animator
 from chess2vid.blender import create_camera, create_light, create_material
 from chess2vid.board_state import BoardState
+from chess2vid.exceptions import NoPieceError
 from chess2vid.piece_factory import StlPieceFactory
 
 from chess2vid.material import set_light_material, set_dark_material
@@ -52,24 +47,16 @@ def square_color(square: Square) -> Color:
         return WHITE if invert else BLACK
 
 
-def _is_castle(board: Board, move: Move):
-    if board.piece_type_at(move.from_square) != KING:
-        return False
-
-    if move.from_square == E1 and move.to_square in [G1, C1]:
-        return True
-
-    if move.from_square == E8 and move.to_square in [G8, C8]:
-        return True
-
-    return False
-
-
 def _get_action_from_move(board: Board, board_state: BoardState, move: Move) -> Action:
     target_occupant = board_state.get_piece_or_none(move.to_square)
-    piece = board_state.get_piece(move.from_square)
 
-    if _is_castle(board, move):
+    try:
+        piece = board_state.get_piece(move.from_square)
+    except ValueError:
+        print(move)
+        raise
+
+    if board.is_castling(move):
         return CastleAction(move.from_square, move.to_square, piece)
 
     if target_occupant:
@@ -107,7 +94,7 @@ class Chess2Vid:
         if self.__verbose:
             print(str)
 
-    def create_frames(self):
+    def create_frames(self) -> bool:
         self.verbose("Creating cameras")
 
         (camera, camera_target) = create_camera()
@@ -137,11 +124,30 @@ class Chess2Vid:
             action.apply(board_state)
             actions.append(action)
 
+        # Reset the board to its initial state (will one by one apply the moves so that the
+        # state of the board mutates along with the moves as we traverse the game)
+        board.reset_board()
+
+        verbose(board.board_fen())
         for move in self.__game.mainline_moves():
-            action = _get_action_from_move(board, board_state, move)
-            self.verbose(f"Applying action {action}")
-            action.apply(board_state)
+            try:
+                action = _get_action_from_move(board, board_state, move)
+            except NoPieceError:
+                print(f"Failed to process move {move}")
+                return False
+
+            self.verbose(f"#{board.fullmove_number} Applying action {action}")
+            try:
+                action.apply(board_state)
+            except NoPieceError:
+                print(
+                    f"Failed to apply action {action}, #{board.fullmove_number} {move}"
+                )
+                return False
+
+            board.push(move)
             actions.append(action)
+            verbose(board.board_fen())
 
         animator = Animator(self.__verbose)
 
@@ -159,6 +165,8 @@ class Chess2Vid:
         camera.location.y = 6
         camera.location.y = 3
         camera.keyframe_insert("location", frame=animator.get_total_frames())
+
+        return True
 
     def render_frames(self, start: int | None, end: int | None):
         scene = bpy.context.scene

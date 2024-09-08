@@ -70,7 +70,8 @@ def main():
 
     c2v = Chess2Vid(**args)
 
-    c2v.create_frames()
+    if not c2v.create_frames():
+        exit(1)
 
     if save_blender:
         # Don't leave anything selected, this is just for the saved blend file
