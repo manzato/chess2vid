@@ -1,5 +1,4 @@
 import os
-from tabnanny import verbose
 import bpy
 
 from chess import (
