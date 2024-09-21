@@ -1,5 +1,6 @@
 import os
 import bpy
+from multiprocessing import Pool
 
 from chess import (
     BLACK,
@@ -177,10 +178,20 @@ class Chess2Vid:
 
         print(f"Rendering frames from {start} to {end}")
 
-        for frame in range(start, end + 1):
-            print(f"Rendering frame {frame}!")
-            scene.frame_current = frame
-            scene.render.filepath = os.path.join(
-                self.__output_path, f"{str(frame)}.png"
-            )
-            bpy.ops.render.render(write_still=True)
+        print(f"Number of CPUs available: {os.cpu_count()}")
+        pool = Pool(processes=os.cpu_count())
+
+        pool.map(self.render_frame, range(start, end + 1))
+
+        pool.close()
+        pool.join()
+
+
+    def render_frame(self, frame):
+        scene = bpy.context.scene
+        print(f"Rendering frame {frame}!")
+        scene.frame_current = frame
+        scene.render.filepath = os.path.join(
+            self.__output_path, f"{str(frame)}.png"
+        )
+        bpy.ops.render.render(write_still=True)
